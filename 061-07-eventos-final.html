@@ -173,12 +173,19 @@
 					$('button').attr('disabled', !selecionado)
 				})
 
+
+				// no grupo de checkbox monitorar evento
 				$('[name="checkboxes"]').on('change', function (e) {
 
-
+					// FILTRA OS SELECIONADOS
 					console.log($('[name="checkboxes"]:checked'))
+
+					// recebe o filtro dos check selecionados
 					let selecionados = $('[name="checkboxes"]:checked')
 					let str = '';
+
+					// iterando sobre os selecionados
+					// recebendo um i index e um el elemento 
 					selecionados.each(function (i, el) {
 						//str += ( $(el).next().text() + ' - valor: ' + el.value + '<br>')
 						let _id = $(el).attr('id')
