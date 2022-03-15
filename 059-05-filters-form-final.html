@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!--    <script src="js/jquery-3.3.1.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        .label,
+        .input {
+            display: block;
+            width: 200px;
+        }
+
+        .input {
+            margin: 5px 0 15px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Jquery 59</h1>
+
+
+        <h2>filtros de formularios</h2>
+
+        <form action="#">
+
+            <label for="txt" class="label">Text</label>
+            <input type="text" id="txt" class="input">
+
+            <label for="pass" class="label">Password</label>
+            <input type="password" id="pass" class="input">
+
+            <label><input type="radio" name="rd" value="M">Manha</label>
+            <label><input type="radio" name="rd" value="T" checked>Tarde</label>
+            <label><input type="radio" name="rd" value="N">Noite</label>
+            <br>
+            <label><input type="checkbox" name="rd" value="M" checked>Manha</label>
+            <label><input type="checkbox" name="rd" value="T">Tarde</label>
+            <label><input type="checkbox" name="rd" value="N">Noite</label>
+            <br>
+            <select name="sl" class="input">
+                <option value="0">Selecione</option>
+                <option value="M">Manha</option>
+                <option value="T">Tarde</option>
+                <option value="N" selected>Noite</option>
+            </select>
+            <textarea name="msg" id="" rows="5" class="input">Mensagem</textarea>
+
+
+            <button class="input" id="btn">Button</button>
+            <input type="submit" value="submit" class="input" disabled>
+            <input type="reset" value="reset" class="input">
+
+
+
+        </form>
+    </div>
+
+
+    <script>
+        $(function () {
+            // todos elementos input
+            $(':input').css('backgroundColor', 'yellow')
+
+            // todos input type text
+            $(':text').css('backgroundColor', '#ccc')
+
+            // todos input type password
+            $(':password').css('backgroundColor', '#ccc')
+
+            // selecionou o label (pai do radio) e aplicou background
+            $(':radio').parent().css('backgroundColor', '#ddd')
+
+            // selecionou o label (pai do checkbox) e aplicou background
+            $(':checkbox').parent().css('backgroundColor', '#bbb')
+
+            // todos os de tipo submit (nesse cxaso botões)
+            $(':submit').css('backgroundColor', 'orange')
+
+            // type reset
+            $(':reset').css('backgroundColor', 'orange')
+
+            // type disabled
+            $(':disabled').css('opacity', '.5')
+
+            // type checkbox que carregaram na pagina checados
+            $(':checkbox:checked').parent().css('backgroundColor', 'red')
+
+            // type radio que carregaram na pagina checados
+            $(':radio:checked').parent().css('backgroundColor', 'red')
+
+            alert($('option:selected').text() + ' está selecionado')
+
+
+
+        })  
+    </script>
+</body>
+
+</html>
