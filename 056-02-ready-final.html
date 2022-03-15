@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!--    <script src="js/jquery-3.3.1.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Jquery 56</h1>
+
+        <div id="jq">
+            <button class="btn" id="btn-jq1">Show</button>
+            <button class="btn" id="btn-jq2">Hide</button>
+
+        </div>
+        <h2>jQuery</h2>
+
+
+        <br>
+
+        <input type="text" class="txt" id="txt">
+
+    </div>
+
+
+</body>
+<script>
+
+    // chamada de método jQuery retorna o objeto jQuery
+    // ex: $('h1') retorna o objeto do DOM
+    // .text() para labels ...
+    // .val() para input text
+
+    // 
+
+    // window.load do JS espera carregar tudo na págia
+
+    // espera o documento estar pronto
+    //$(document).ready(function(){
+
+    // outra forma seria colocar uma função dentro do jQuery q ele espera o carregamento
+    $(function () {
+        alert('dom carregado')
+        var $h2 = $('h2').text('texto alterado no carregamento do DOM com jQuery')
+    })
+
+
+    const btn_jq1 = $('#btn-jq1')
+    const btn_jq2 = $('#btn-jq2')
+    const h2_jq = $('h2')
+    //console.log(h2_jq)
+    //console.log(btn_jq1)
+    //console.log(btn_jq2)
+
+    btn_jq2.on('click', function () {
+        //console.log(h2_jq)
+        h2_jq.hide(1000)
+        // continua sendo um h1 com span inserdio
+        $('h1').html("<span>Texto span</span>")
+    })
+
+    btn_jq1.on('click', function () {
+        h2_jq.show(1000)
+    })
+
+
+
+</script>
+
+</html>
