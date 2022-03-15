@@ -169,6 +169,7 @@
 
 					let selecionado = $(this).is(':checked');
 
+					// attr() também pode ser utilizado para recuperar valor
 					// attr() quando recebe true desabilitado
 					$('button').attr('disabled', !selecionado)
 				})
@@ -195,6 +196,7 @@
 					$('#checados').html(str)
 				})
 
+				//  radio vai ser sempre true para o clicado
 				$('[name="radio"]').on('change', function (e) {
 					let _id = $(this).attr('id')
 					$('#checado').text($('label[for="' + _id + '"]').text() + ' -  valor: ' + this.value)
