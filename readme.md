@@ -26,30 +26,8 @@
   <br>
   <h3 align="left">Linguagens e ferramentas utilizadas:</h3>
   <br>
-  <div align="left">
-    <table align="left">
-      <tr>
-        <td align=center width="180">
-            <a  href="https://www.linkedin.com/in/robinsonbrz/">
-            <img src="https://raw.githubusercontent.com/robinsonbrz/robinsonbrz/main/static/img/empty.png" width="100" height="100" />
-            <br> 
-        </td>
-        <td align=center width="180">
-            <a  href="https://www.linkedin.com/in/robinsonbrz/">
-            <img src="https://raw.githubusercontent.com/robinsonbrz/robinsonbrz/main/static/img/empty.png" width="100" height="100"/>
-            <br> 
-        </td>
-        <td align=center width="180">
-            <a  href="https://www.linkedin.com/in/robinsonbrz/">
-            <img src="https://raw.githubusercontent.com/robinsonbrz/robinsonbrz/main/static/img/empty.png"  width="100" height="100"/>
-        <br> 
-        </td>
-            <td align=center width="180">
-            <a  href="https://www.linkedin.com/in/robinsonbrz/">
-        <img src="https://raw.githubusercontent.com/robinsonbrz/robinsonbrz/main/static/img/empty.png"  width="100" height="100"/>
-        <br>
-        </td>
-      </tr>
+  <div align="center">
+    <table align="center">
       <tr>
         <td align=center >
             <a  href="https://www.linkedin.com/in/robinsonbrz/">
@@ -97,8 +75,7 @@
     </table>
   </div>
   <br>
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-  <br><br><br><br><br><br><br><br><br><br><br>
+  
   <h3 align="left"> 
   🚧  Projeto 🚀 Em construção...  🚧
   </h3>

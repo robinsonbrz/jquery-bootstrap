@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!--    <script src="js/jquery-3.3.1.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Jquery 55</h1>
+
+        <div id="vanillajs">
+            <h2>Javascript puro</h2>
+            <button class="btn" id="btn-vanilla">botao 1 - vanilla</button>
+            <button class="btn">botao 2 - vanilla</button>
+            <button class="btn">botao 3 - vanilla</button>
+        </div>
+        <hr>
+        <div id="jq">
+            <h2>Javascript com jQuery</h2>
+            <button class="btn" id="btn-jq">botao 1 - jquery</button>
+            <button class="btn">botao 2 - jquery</button>
+            <button class="btn">botao 3 - jquery</button>
+        </div>
+
+        <hr>
+        <div id="output" class="bg-primary text-white mx-5 text-center"><br></div>
+        <hr>
+    </div>
+    <script>
+        // objeto que representa saída elemento #output
+        const output = document.querySelector('#output');
+
+        // objeto que representa o botão
+        const btn1_vanilla = document.querySelector('#btn-vanilla');
+        // listen click
+        btn1_vanilla.addEventListener('click', function () {
+            // receb e conteúdo do botão
+            let str = this.textContent;
+            // escreve conteúdo de str para output
+            output.textContent = str;
+        })
+
+        // ('#vanillajs .btn')  é uma coleção de objetos
+        const btns_vanilla = document.querySelectorAll('#vanillajs .btn');
+        btns_vanilla.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                let str = this.textContent;
+                output.textContent = str;
+            })
+        })
+
+
+
+
+
+
+
+        /*  jquery */
+        // objeto div DOM
+        const $output = $('#output')
+        // objeto botão
+        const btn1_jq = $('#btn-jq');
+
+        /*btn1_jq.click(function) {
+            // receb e conteúdo do botão
+            let str = this.textContent;
+            // escreve conteúdo de str para output
+            output.textContent = str;
+        } */
+
+
+        // btn1_jq.on('click',   evento click
+        btn1_jq.on('click', function () {
+            let str = $(this).text()
+            $output.text(str)
+        })
+
+        // btns_jq = $('#jq .btn')  é uma coleção de objetos
+        const btns_jq = $('#jq .btn')
+
+        btns_jq.on('click', function () {
+            let str = $(this).text()
+            $output.text(str)
+        })
+
+    </script>
+
+</body>
+
+</html>
