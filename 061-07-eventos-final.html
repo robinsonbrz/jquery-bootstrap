@@ -202,11 +202,15 @@
 					$('#checado').text($('label[for="' + _id + '"]').text() + ' -  valor: ' + this.value)
 				})
 
+				// função q será chamada no on submit (utilizando função nomeada)
 				function enviarDados(e) {
+					// e.preventdefault evita o envio do form e recarregamento da página
+					// pode ser utilizado em ajax também para mandar por baixo dos panos sem reload de página
 					e.preventDefault();
 					alert('os dados serao enviados')
 				}
 
+				// evento submit do form
 				$('form').on('submit', enviarDados);
 
 				$(document).one('dblclick', function (e) {
