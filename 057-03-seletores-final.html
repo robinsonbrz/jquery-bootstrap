@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!--    <script src="js/jquery-3.3.1.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
+    <style>
+        .destaque {
+            color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Jquery 57</h1>
+
+        <input type="text" class="txt" id="txt" placeholder="texto qualquer"><br>
+        <input type="email" class="email" id="email" placeholder="email qualquer"><br>
+
+        <a href="#" title="qualquer link">Link falso</a> |
+        <a href="#">Link falso</a> |
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+        <p class="destaque">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+
+        <h2>Seletores jQuery</h2>
+
+        <ul>
+            <li> item 1</li>
+            <li> item 2</li>
+            <li> item 3
+                <ul>
+                    <li>item 3.1</li>
+                    <li>item 3.2</li>
+                    <li>item 3.3</li>
+                    <li>item 3.4</li>
+                </ul>
+            </li>
+            <li> item 4</li>
+            <li> item 5</li>
+            <li> item 6</li>
+            <li> item 7</li>
+        </ul>
+
+    </div>
+
+
+    <script>
+        //  colocando script no final e dentro de uma função 
+        // para garantir q vai rodar após carregamento do DOM
+
+
+        $(function () {
+            // elemento selecionado por classe
+            $('#txt').val('alterado com jquery')
+            // elemento selecionado por classe
+            $('.email').val('alterado com jquery')
+
+            // $('p, li') seleciona todos os p e li
+
+
+            // FILTRA TODOS p com excessão dos que tem a classe destaque
+            $('p:not(.destaque), li').css('color', '#999')
+
+            // todos li filhos de ul e filhos da classe container
+            $('.container > ul > li').css('color', 'black')
+
+            // seleciona o primeiro p imediatamente após classe destaque
+            // addClass ao próximo p
+            $('.destaque + p').addClass('destaque')
+
+            // seleciona A TODOS p imediatamente após classe destaque
+            // addClass ao próximo p
+            // $('.destaque + p').addClass('destaque')
+
+
+            // apenas primeira li da página
+            $('li:first').css('color', 'green')
+            /*
+            // todos li da página que são last child
+            // ('li:last-child') 
+            $('li:last').css('color', 'green')
+            first child todos prim filho
+
+            */
+
+
+            // seleciona todos greater than 2 
+            $('p:gt(2)').css({
+                'color': 'orange',
+                fontSize: '22px'   //poderia usar "font-size"
+            })
+
+            // iterators iniciam em 0
+            // todos li que forem menores que 2
+            $('li:lt(2)').css('fontSize', '30px')
+
+            // todos a que contém atributo title
+            $('a[title]').css('color', 'red')
+
+            // todos a que não contém atributo title
+            $('a:not([title])').hide()
+
+        })  
+    </script>
+</body>
+
+</html>

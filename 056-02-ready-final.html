@@ -66,13 +66,14 @@
 
     btn_jq2.on('click', function () {
         //console.log(h2_jq)
-        h2_jq.hide(1000)
+        h2_jq.hide(3000).css('background', 'red').css('color', 'white')
         // continua sendo um h1 com span inserdio
         $('h1').html("<span>Texto span</span>")
     })
 
     btn_jq1.on('click', function () {
-        h2_jq.show(1000)
+        h2_jq.show(1000).css('background', 'green').css('color', 'black')
+
     })
 
 
