@@ -122,7 +122,7 @@
 				click  quando se clica e solta o botão do Mouse 
 				pode-se usar para drag and drop
 				*/
-
+				/*function (e) é a função de callback*/
 				$('#div1').on('click mousedown mouseup', function (e) {
 					console.log(e.type)
 				})
@@ -149,6 +149,8 @@
 
 					let selecionados = $(this).find(':selected');
 					let str = '';
+
+					// iterando sobre vários elementos selecionados
 					selecionados.each(function (i, el) {
 						str += (el.textContent + ' - valor: ' + el.value + '<br>')
 					})
