@@ -42,12 +42,14 @@
 		// no exemplo abaixo caso fosse utilizado referneciaria ao documento html 
 		// e nao ao div .coordenadas
 		$(function () {
+			// evento mouse move dentro da div
 			$('.coordenadas').mousemove(function (e) {
-
+				// offset recebe a diferença entre as coordenadas da div e o documento html
 				var pos = $(this).offset()
 				console.log(pos)
 				console.log(e.clientX, e.clientY)
 
+				// em x e y subtrai os valores do deslocamento da div para o documento
 				var x = e.clientX - pos.left;
 				var y = e.clientY - pos.top;
 
