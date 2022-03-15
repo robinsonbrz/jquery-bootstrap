@@ -213,8 +213,10 @@
 				// evento submit do form
 				$('form').on('submit', enviarDados);
 
+				// evento one dispara ao duplo click
+				// one listen somente uma vez depois ignora
 				$(document).one('dblclick', function (e) {
-					alert('duplo clique no document')
+					alert('duplo clique no document. utilizando one')
 				})
 
 				const mostraN = e => {
@@ -222,12 +224,11 @@
 
 					alert(`mostrou esse alert ${n} ${(n > 1) ? 'vezes' : 'vez'}`)
 					if (n >= 3) {
-						$(document).off('click', mostraN)
+						console.log(n)
+						// off desliga o evento "click"
+						$(document).off('click', mostraN);
 					}
-
-
 				}
-
 				let n = 0;
 				$(document).on('click', mostraN)
 
