@@ -108,7 +108,7 @@
 				<label class="form-check-label"><input type="checkbox" class="form-check-input" id="aceito"
 						value="aceito">Aceito o contrato</label>
 			</div>
-			<button type="submit" class="btn btn-primary" disabled="disabled">Manda ae</button>
+			<button type="submit" class="btn btn-primary" disabled="disabled">Aceito</button>
 		</form>
 		<div>
 
@@ -139,7 +139,7 @@
 					$('#textoDigitado').text($(this).val())
 				})
 
-
+				// 
 				$('#select').on('change', function (e) {
 					//console.log(e.target)            
 					//console.log(e.target.value)
@@ -159,14 +159,17 @@
 
 
 				})
-
+				// se checkbox for marcado ou desmarcado on change
 				$('#aceito').on('change', function (e) {
 					console.log(this)
 					console.log(this.value)
 					console.log(this.checked)
+					// jQuery em apenas uma linha
 					console.log($(this).is(':checked'))
 
 					let selecionado = $(this).is(':checked');
+
+					// attr() quando recebe true desabilitado
 					$('button').attr('disabled', !selecionado)
 				})
 
