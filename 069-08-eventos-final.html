@@ -51,60 +51,58 @@
 </head>
 
 <body>
-	<div class="container">
 
-		<h1>jQuery 61</h1>
-		<div id="div1">Evento hover</div>
-		<br>
-		<div class="form-group" id="parent-focus">
-			<label for="text">focus/blur</label>
-			<input type="text" class="form-control" id="text">
-			<div id="focou">Deu foco</div>
+	<div id="div1">Evento hover</div>
+	<br>
+	<div class="form-group" id="parent-focus">
+		<label for="text">focus/blur</label>
+		<input type="text" class="form-control" id="text">
+		<div id="focou">Deu foco</div>
+	</div>
+
+	<hr>
+
+	<p>Eventos mouse</p>
+	<div id="div2">
+		<div id="div2b">
+
 		</div>
+	</div>
+	<br>
+	<button> trigger / triggerHandler </button>
 
-		<hr>
+	<script>
 
-		<p>Eventos mouse</p>
-		<div id="div2">
-			<div id="div2b">
+		let n = 0;
+		$('#div1').hover(function () {
+			$(this).text(++n)
+		}, function () {
+			$(this).text(--n)
+		})
 
-			</div>
-		</div>
-		<br>
-		<button> trigger / triggerHandler </button>
-
-		<script>
-
-			let n = 0;
-			$('#div1').hover(function () {
-				$(this).text(++n)
-			}, function () {
-				$(this).text(--n)
+		$('#parent-focus')
+			.on('focusin', function () {
+				$('#focou').fadeIn()
+			})
+			.on('focusout', function () {
+				$('#focou').fadeOut()
 			})
 
-			$('#parent-focus')
-				.on('focusin', function () {
-					$('#focou').fadeIn()
-				})
-				.on('focusout', function () {
-					$('#focou').fadeOut()
-				})
+		let d = 0;
+		$('#div2').on('mouseover mouseout', function () {
+			$('#div2b').text(++d)
+		})
 
-			let d = 0;
-			$('#div2').on('mouseover mouseout', function () {
-				$('#div2b').text(++d)
-			})
+		// triggerhandler dispara evento
+		$('button').on('click', function () {
+			//$('#div2b').triggerHandler('mouseover')
+			$('#text').triggerHandler('focus')
+		})
 
-			// triggerhandler dispara evento
-			$('button').on('click', function () {
-				//$('#div2b').triggerHandler('mouseover')
-				$('#text').triggerHandler('focus')
-			})
+		$('#text').on('focus', function () { console.log('focus') })
 
-			$('#text').on('focus', function () { console.log('focus') })
-
-		</script>
-		<div>
+	</script>
+	<div>
 </body>
 
 </html>
