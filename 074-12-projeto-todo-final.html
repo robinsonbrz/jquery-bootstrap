@@ -151,7 +151,9 @@
                     })
                     // no click do botão
                     this.$container.on('click', '.btn', e => {
+                        // item.index retorna o indice do objeto jQuery
                         var item = $(e.target).closest('.list-group-item')
+                        // deleta o índice
                         this.deleteTask(item.index())
                     })
 
@@ -159,14 +161,12 @@
 
                 // funcao adiciona tarefa
                 addTask: function (task) {
-
                     let $newTask = $(this.template)
                     $newTask.find('span').text(task)
                     // apend no final do container a tarefa como no template
                     this.$container.append($newTask)
                     // devolve o foco para o input
                     this.$input.val('').focus()
-
                 },
 
                 // funcao delete task
