@@ -157,6 +157,7 @@
 
                 },
 
+                // funcao adiciona tarefa
                 addTask: function (task) {
 
                     let $newTask = $(this.template)
@@ -168,11 +169,12 @@
 
                 },
 
-                // funcao delete
+                // funcao delete task
                 deleteTask: function (index) {
                     // fadeout delete e hide do jQery tem algum problema com o flex do bootstrap
                     // por isso espera o final para dar remove
                     this.$container.find('.list-group-item').eq(index).fadeOut(500, function () {
+                        // remove do list
                         $(this).remove()
                     })
                 }
