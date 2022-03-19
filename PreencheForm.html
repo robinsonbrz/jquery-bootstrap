@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <p>Name: <input type="text" id="test" value="Mickey Mouse"></p>
+        <p>Password: <input type="password" id="test02" value="" placeholder="Digite sua senha"></p>
+
+
+        <button class="btn_01">Show Value</button>
+
+    </div>
+    <script>
+        $(document).ready(function () {
+            $(".btn_01").click(function () {
+                alert("Value: " + $("#test02").val());
+                $("#test").val("Consegui");
+
+            });
+        });
+    </script>
+</body>
+
+</html>
