@@ -98,6 +98,7 @@
 
 		$('.container').eq(1).children('.box').on('click', function (e) {
 			console.log(this, e.target, e.currentTarget)
+			// empty apaga o conteudo
 			$(e.target).toggleClass('atual').empty()
 
 		})
@@ -117,10 +118,15 @@
 			console.log(e.currentTarget)
 		})
 
+		// $('<div class="box">box5</div>')  // cria o elemento 
+		// prependTo(' .container:eq(2) ')   // posiciona no container indice 2
+
 		// cria um div anteriormente ao segundo grupo .container
 		$('<div class="box">box5</div>').prependTo(' .container:eq(2) ')
 
 		// cria um div anteriormente ao segundo grupo .container
+		// $('.container:eq(2)')  // seleciona o alvo
+		// .prepend('<div class="box">box6</div>') // cria
 		$('.container:eq(2)').prepend('<div class="box">box6</div>')
 
 	</script>
