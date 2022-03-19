@@ -101,8 +101,6 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.js"
         integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-
-
     <script>
 
 
@@ -138,6 +136,7 @@
                     // espera evento click
                     this.$btn.on('click', e => {
                         let task = this.$input.val()
+                        // se houver tarefa insre
                         if (task) {
                             this.addTask(task)
                         }
@@ -155,10 +154,12 @@
                 },
 
                 addTask: function (task) {
+
                     let $newTask = $(this.template)
                     $newTask.find('span').text(task)
                     // apend no final do container a tarefa como no template
                     this.$container.append($newTask)
+                    // devolve o foco para o input
                     this.$input.val('').focus()
 
                 },
