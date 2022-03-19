@@ -142,7 +142,11 @@
                         }
                     })
                     // na mudança de estado do checkbox
+                    // mao foi utlizado o metodo find checkbox e sim colocado no contexto
+                    // porque senão os novos elementos criados não são considerados
                     this.$container.on('change', '[type="checkbox"]', e => {
+                        // toglge no checkbox
+                        // adiciona classe done
                         $(e.target).closest('.list-group-item').toggleClass('done')
                     })
                     // no click do botão
