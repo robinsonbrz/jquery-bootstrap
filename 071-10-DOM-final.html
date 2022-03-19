@@ -68,10 +68,10 @@
 		// $('.container') seleciona a classe container
 		// .eq(0) seleciona a primeira classe .container
 		// .children('.box') todos os filhos classe box
-		// .filter('[title]')  que contenha atributo title
+		// .filter('[title]')  que contenha atributo title atributos em colchetes
 		//.each((i, el) =>  arrow function para cada el faça +>
 		$('.container').eq(0).children('.box').filter('[title]').each((i, el) => {
-			let $el = $(el);  // recebe objeto el
+			let $el = $(el);  // recebe objetos el
 			let title = $el.attr('title');  // armazena o valor do atributo title
 			$el.text(title);		// coloca o valor de title dentro da Div 
 			$el.removeAttr('title') // remove o tatributo title
@@ -81,7 +81,7 @@
 
 		// listener em todos os primeiros  .container 
 		$('.container').eq(0).children('.box').on('click', function (e) {
-			// se o clicado tiver classe atual
+			// se o clicado tiver classe atual hasclass
 
 			if ($(this).hasClass('atual')) {
 				$(this).append('<p>item clicado novamente</p>')
