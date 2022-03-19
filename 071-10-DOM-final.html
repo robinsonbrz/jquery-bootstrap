@@ -35,7 +35,7 @@
 </head>
 
 <body>
-	<div class="container">
+	<div>
 
 		<h1>jQuery 71</h1>
 
@@ -65,9 +65,8 @@
 	</div>
 
 	<script>
-
 		// $('.container') seleciona a classe container
-		// .eq(0) seleciona a primeira classe
+		// .eq(0) seleciona a primeira classe .container
 		// .children('.box') todos os filhos classe box
 		// .filter('[title]')  que contenha atributo title
 		//.each((i, el) =>  arrow function para cada el faça +>
@@ -79,17 +78,23 @@
 		})
 
 
+
+		// listener em todos os primeiros  .container 
 		$('.container').eq(0).children('.box').on('click', function (e) {
+			// se o clicado tiver classe atual
 
 			if ($(this).hasClass('atual')) {
 				$(this).append('<p>item clicado novamente</p>')
+				console.log("Era atual")
 			} else {
+				// remove a classe "atual" do objeto clicado
 				$('.container').eq(0).find('.atual').removeClass('atual')
 				$(this).addClass('atual')
 				$(this).prepend('<p>clicou</p>')
 			}
 
 		})
+
 
 		$('.container').eq(1).children('.box').on('click', function (e) {
 			console.log(this, e.target, e.currentTarget)
@@ -104,6 +109,7 @@
 			console.log(e.currentTarget)
 		})
 
+
 		$('.container').eq(2).on('click', '.box', function (e) {
 			console.log('2')
 			console.log(this)
@@ -111,8 +117,12 @@
 			console.log(e.currentTarget)
 		})
 
+		// cria um div anteriormente ao segundo grupo .container
 		$('<div class="box">box5</div>').prependTo(' .container:eq(2) ')
+
+		// cria um div anteriormente ao segundo grupo .container
 		$('.container:eq(2)').prepend('<div class="box">box6</div>')
+
 	</script>
 
 </body>
