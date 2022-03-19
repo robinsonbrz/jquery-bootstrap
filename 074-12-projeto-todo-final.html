@@ -129,7 +129,9 @@
                     // espera evento keyup
                     this.$input.on('keyup', (e) => {
                         let task = this.$input.val()
+                        // cod 13 é a tecla enter
                         if (e.keyCode === 13 && task) {
+                            // chama função adiciona tarefa
                             this.addTask(task)
                         }
                     })
@@ -155,7 +157,7 @@
                 addTask: function (task) {
                     let $newTask = $(this.template)
                     $newTask.find('span').text(task)
-
+                    // apend no final do container a tarefa como no template
                     this.$container.append($newTask)
                     this.$input.val('').focus()
 
