@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+	<!--    <script src="js/jquery-3.3.1.js"></script>-->
+	<script src="https://code.jquery.com/jquery-3.3.1.js"
+		integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+	<style>
+		body {
+			padding: 15px;
+		}
+
+		.box {
+			border: 5px dashed black;
+			background: #ccc;
+
+			margin: 20px auto;
+			min-height: 40px;
+			width: 200px;
+		}
+
+		.container {
+			border: 1px solid #aaa;
+			background: #ccc;
+			padding: 10px;
+		}
+
+		.boxContainer {
+			border: 3px solid red;
+			padding: 5px;
+		}
+
+		.boxContainer2 {
+			border: 3px solid green;
+			padding: 5px;
+		}
+	</style>
+
+
+</head>
+
+<body>
+
+	<section class="container">
+		<h1>jQuery 073</h1>
+		<div class="box">box 1 - 1</div>
+		<div class="box">box 2 - 1</div>
+		<div class="box">box 3 - 1</div>
+		<div class="box">box 4 - 1</div>
+		<div class="box">box 5 - 1</div>
+		<div class="box">box 6 - 1</div>
+	</section>
+	<hr>
+	<section class="container">
+		<div class="box">box 1 - 2</div>
+		<div class="box">box 2 - 2</div>
+		<div class="box">box 3 - 2</div>
+	</section>
+
+	<hr>
+	<section class="container">
+		<div class="box">box 1 - 3</div>
+		<div class="box">box 2 - 3</div>
+		<div class="box">box 3 - 3</div>
+	</section>
+
+	<div class="box">box fora do container</div>
+
+
+	<script>
+
+		/*
+		Duas maneiras de implementar a mesma coisa
+		inserir um p ante e depois das classes box
+		$('<p>antes</p>').insertBefore('.box')
+		$('<p>depois</p>').insertAfter('.box')
+		
+		$('.box').before('<p>antes</p>')
+		$('.box').after('<p>depois</p>')
+		*/
+
+
+
+		// wrap envolve o bjeto 
+		// $('.container .box').wrap('<div class="boxContainer"></div>')
+
+
+		// $('.container:last .box').unwrap()
+
+
+		//$('.container:last .box').wrapAll('<div class="boxContainer2"></div>')
+		//$('.box').wrapAll('<div class="boxContainer2"></div>')
+
+		// wrapinner envolve todos os pais tambem
+		// $('.container:last').wrapInner('<div class="boxContainer2"></div>')
+
+
+		// replaceWith  substitui com 
+		// $('.container:last .box').replaceWith('<div class="box"> box subsituto</div>')
+		// $('.container:last .box').replaceWith(function (i, content) {
+		//	return $(this).text(`box ${i + 1} substituto - 3`)
+		// })
+
+		// replace all substitui todos
+		//$('<div class="box"> box subsituto</div>').replaceAll('.container:last .box')
+
+		// limpa conteudo
+		// $('.container:last').empty()
+
+		// 	remove objeto
+		// $('.container:last').remove()
+
+		//	$('.container:last .box').add('body > .box').append('<b>negrito depois</b>')
+		//	$('.container:last .box').add('body > .box').prepend('<i>italico antes</i>')
+
+		//$('.container').append($('body > .box'))
+
+		$('body > .box').on('click', function () { console.log('clicou') })
+		// clone clona o objeto
+		$('body > .box').clone().appendTo('.container')
+
+
+
+	</script>
+</body>
+
+</html>
