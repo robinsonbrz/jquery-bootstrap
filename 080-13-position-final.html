@@ -178,18 +178,20 @@
                     $('#btnVoltar').fadeOut(500)
                 }
             })
-            /*
- 
-$('#btnVoltar').on('click', function(){
-  //$(document).scrollTop(0)
-  $('html, body').animate({scrollTop: 0}, 1000)
-})
- 
-$(window).on('resize', function(){
-  $(document).trigger('scroll')
-})
- 
-*/
+
+            $('#btnVoltar').on('click', function () {
+                // retorna ao topo sem animação
+                // $(document).scrollTop(0)
+                // retorna ao topo com animaçao 
+                $('html, body').animate({ scrollTop: 0 }, 1000)
+            })
+
+            // dispara quando hover redimentsionamento            
+            $(window).on('resize', function () {
+                $(document).trigger('scroll')
+            })
+
+
         })
     </script>
 
