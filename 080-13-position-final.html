@@ -155,28 +155,30 @@
                 let h4 = $(this).outerHeight(true);
                 $(e.target).append(` outerWidth(true): ${w4} | outerHeight(true): ${h4}<br> `)
             })
+
+            // reposiciona elemento
+            $('.parent:eq(3)').offset({ top: 50, left: 150 })
+
+            var documento = $(document).height();
+            var alturaJanela = $(window).height();
+            var maxScroll = documento - alturaJanela;
+
+            // evento scroll da pagina
+            $(document).on('scroll', function () {
+
+                documento = $(document).height();
+                alturaJanela = $(window).height();
+                maxScroll = documento - alturaJanela;
+
+                var meuScroll = $(document).scrollTop();
+                // se scroll chegar na parte inferior da página. Exibe botão
+                if (maxScroll - meuScroll <= 20) {
+                    $('#btnVoltar').fadeIn(500)
+                } else {
+                    $('#btnVoltar').fadeOut(500)
+                }
+            })
             /*
- 
-$('.parent:eq(3)').offset({top: 50, left: 150})
- 
-var documento = $(document).height();
-var alturaJanela = $(window).height();
-var maxScroll = documento - alturaJanela;
- 
-$(document).on('scroll', function(){
-  
-  documento = $(document).height();
-  alturaJanela = $(window).height();
-  maxScroll = documento - alturaJanela;
-  
-  var meuScroll = $(document).scrollTop();
-  
-  if(maxScroll - meuScroll <= 20){
-      $('#btnVoltar').fadeIn(500)
-  } else {
-      $('#btnVoltar').fadeOut(500)
-  }
-})
  
 $('#btnVoltar').on('click', function(){
   //$(document).scrollTop(0)
