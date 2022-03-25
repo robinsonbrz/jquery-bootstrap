@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <style>
+        #animar {
+            width: 350px;
+            height: 250px;
+            background: #ddd;
+            padding: 15px;
+            box-sizing: content-box;
+            position: absolute;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+
+    <div class="container">
+
+
+        <button class="btn btn-primary my-5">slide</button>
+        <button class="btn btn-primary my-5">animar left</button>
+        <button class="btn btn-primary my-5">parar</button>
+        <button class="btn btn-primary my-5">animar</button>
+
+        <div id="output" class="mt-5"></div>
+        <div id="animar"></div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
+    <script>
+        const animar = $('#animar')
+        const btns = $('.btn')
+        const output = $('#output')
+
+        setInterval(() => {
+            if (animar.is(':hidden')) {
+                output.css('color', 'red').text('oculto')
+            } else if (animar.is(':visible')) {
+                output.css('color', 'green').text('visivel')
+
+            }
+        }, 500)
+
+        btns.eq(0).on('click', function () {
+            // faz slide toggle
+            animar.slideToggle(3000)
+        })
+
+        btns.eq(1).on('click', function () {
+            // animar.animate({left: '50px'}, 2000)
+            // add 50px a cada click
+            // parâmetro linear evita q desacelere swing é padrao e não linear
+            animar.animate({ left: '+=50px' }, 2000, "linear")
+        })
+
+
+        btns.eq(2).on('click', function () {
+            // animar.animate({left: '50px'}, 2000)
+            // stop para a animação. mas somente um não apaga a fila
+            animar.stop();
+        })
+
+        btns.eq(3).on('click', function () {
+            // adianta aninhar animate, nem usar delay
+            // metodo css não é método de animação
+            // para ter um resultado de fila é preciso utilizar um callback
+            animar.animate({ left: '250px' }, 2000)
+            // queue é uma função de fila
+            animar.queue(function () {
+                // quando utiliza o queue o objeto não mais aceita funções de animação
+                // pra isso precisa fazer o dequeu tirar da fila
+                animar.css('background', 'red').dequeue();
+            })
+            animar.animate({ top: '200px' }, 1000).slideUp('slow');
+            // background não aceita animação
+            // animar.animate({ left: '250px' }, 2000).animate({ background: 'blue' }, 2000);
+
+        })
+    </script>
+
+
+</body>
+
+</html>
