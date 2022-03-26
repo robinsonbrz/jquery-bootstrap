@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+  <title>Web Fundamentos</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+    integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="css/estilos.css">
+
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="full">
+      <div class="img"></div>
+    </div>
+
+    <ul class="thumbs">
+      <li>
+        <a href="images/fulls/01.jpg"><img src="images/thumbs/01.jpg"></a>
+      </li>
+      <li>
+        <a href="images/fulls/02.jpg"><img src="images/thumbs/02.jpg"></a>
+      </li>
+      <li>
+        <a href="images/fulls/03.jpg"><img src="images/thumbs/03.jpg"></a>
+      </li>
+      <li>
+        <a href="images/fulls/04.jpg"><img src="images/thumbs/04.jpg"></a>
+      </li>
+      <li>
+        <a href="images/fulls/05.jpg"><img src="images/thumbs/05.jpg"></a>
+      </li>
+      <li>
+        <a href="images/fulls/06.jpg"><img src="images/thumbs/06.jpg"></a>
+      </li>
+    </ul>
+  </div>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+
+  <script>
+
+    $(function () {
+      // mecanismo criado para ter comportamento quando não carregar js
+      // ou seja funcionar mesmo sem js de forma funcional
+      // $('body').removeClass('no-js').addClass('js'); $('body').removeClass('js').addClass('no-js');
+
+
+      // função que seta a imagem principal a ser exibida
+      // recebe objeto da imagem que foi clicada ou a primeira da lista no carregamento
+      function setImage(link) {
+        let img = link.attr('href');
+        // coloca imagem de href como background da img marcada na classe
+        $('.full .img').css('background-image', 'url("' + img + '")')
+        // remove todas classes active
+        $('.thumbs .active').removeClass('active')
+        // adiciona active apenas em link
+        link.addClass('active')
+      }
+      // no primeiro carregamento seta a primeira imagem
+      setImage($('.thumbs a').first())
+
+      $('.full .img').css('background-image', 'url("images/fulls/01.jpg")')
+
+      $('.thumbs a').on('click', function (e) {
+        // não seguir o link de <a> removedefault
+        e.preventDefault()
+        // recebe objeto clicado em variavel
+        let link = $(this);
+        // fade out e chama função q muda background
+        $('.full .img').fadeOut(400, function () {
+          // chama função q muda o background
+          setImage(link)
+          // depois de receber a imagem faz o fade in
+          $(this).fadeIn(400)
+        })
+      })
+
+    })
+
+  </script>
+
+</body>
+
+</html>
