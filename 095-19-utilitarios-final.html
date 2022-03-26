@@ -127,11 +127,11 @@
         $('.container').empty().append($.map(arr2, function (el, i) {
             return $('<p>').html(el)
         }))
-            /*
- 
-$('.container').append( $('<p>').html( $.param(obj) ) )
- 
-*/
+
+        // converte numa string - útil para envio de valores Ajax
+        $('.container').append($('<p>').html($.param(obj)))
+
+
     </script>
 
 
