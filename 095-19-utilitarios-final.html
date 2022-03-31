@@ -65,9 +65,13 @@
 
     <script>
 
+
+        // Funções utilitárias jquery
+        // Muitas já não são tão necessárias. Pela evolução do Javascript
+
         /*
         // para todo <p>
-        // i index , el elemento    
+        // each iteração nos elementos encontrados      i index , el elemento    
         $('p').each(function (i, el) {
             // mostra console
             console.log(i, el)
@@ -99,7 +103,7 @@
             })
             
             */
-        // cria um array com os conteúdos de p
+        // map cria um array com os conteúdos de p
         let map1 = $('p').map(function (i, el) {
             console.log(i, el)
             // retorna para quem a chamou
@@ -107,6 +111,11 @@
             // reverte a order da matriz de retorno ou seja de traz para frente
         }).get().reverse();
 
+        // map1.get() // recupera a sring do objeto
+
+
+
+        // remove os paragrados
         $('p').remove()
 
         let map2 = $.map(map1, function (el, i) {
@@ -121,13 +130,15 @@
         // grep é tipo um filtro
         let arr2 = $.grep($('p'), function (el, i) {
             // se encontrar a palavra casa retrona true e se retorna true é anexada ao array arr2
-            return $(el).text().indexOf('casa') >= 0
+
+            return $(el).text().indexOf('casa') >= 0 // precisa retornar baseado em uma condição booleana caso true inclui em map2
         }).reverse()
 
+        //
         $('.container').empty().append($.map(arr2, function (el, i) {
             return $('<p>').html(el)
         }))
-
+        // param formata para envio get
         // converte numa string - útil para envio de valores Ajax
         $('.container').append($('<p>').html($.param(obj)))
 
