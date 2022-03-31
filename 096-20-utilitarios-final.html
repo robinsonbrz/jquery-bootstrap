@@ -95,7 +95,7 @@
                 })
                 // se existe algo em filtrado
                 if (filtrado.length) {
-                    // 
+                    // circunda palavra encontrada com uma span com a classe= "destaq" 
                     $('.content').empty().append($.map(filtrado, (el, i) => {
                         $(el).html($(el).text().replace(val, '<span class="destaq"> ' + val + '</span>'))
                         return $(el)
