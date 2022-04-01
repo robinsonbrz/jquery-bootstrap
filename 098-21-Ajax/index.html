@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/estilos.css">
+</head>
+
+<body class="bg-light">
+
+  <div class="container">
+    <div class="jumbotron p-31 p-md-2 text-white rounded bg-dark">
+      <div class="py-5 text-center">
+        <h2>Ajax API</h2>
+        <p class="lead">Exemplo de consumo de Api com jQuery, utilizando a fake Api de teste para leitura de registros
+        </p>
+
+        <p>https://jsonplaceholder.typicode.com/guide/</p>
+        <p>Update e Delete se perdem com a atualização da página.</p>
+      </div>
+    </div>
+
+
+    <div class="row">
+
+      <div class="col-sm">
+        <h4 class="mb-3">Agenda de contatos</h4>
+
+        <form>
+          <div class="row">
+            <div class="col-md-6 mb-3 col-lg-3">
+              <label for="name">Nome</label>
+              <input type="text" class="form-control" id="name" autocomplete="off">
+            </div>
+            <div class="col-md-6 mb-3 col-lg-3">
+              <label for="username">Usuário</label>
+              <input type="text" class="form-control" id="username" autocomplete="off">
+            </div>
+            <div class="col-md-6 mb-3 col-lg-3">
+              <label for="email">email</label>
+              <input type="email" class="form-control" id="email" autocomplete="off">
+            </div>
+            <div class="col-md-6 mb-3 col-lg-3 d-flex justify-content-end flex-column">
+              <button class="btn btn-primary btn-mds" type="submit">Cadastrar</button>
+            </div>
+          </div>
+        </form>
+
+        <table class="table">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Usuário</th>
+              <th scope="col">Email</th>
+              <th scope="col">Street</th>
+              <th scope="col">Suite</th>
+              <th scope="col">City</th>
+              <th scope="col">Zip Code</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- -->
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; Enedino.com.br</p>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a href="enedino.com.br">Robinson</a></li>
+        <li class="list-inline-item"><a href="enedino.com.br">Enedino</a></li>
+      </ul>
+    </footer>
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+
+  <!--  Se não encontrar jQuery da Cdn busca local-->
+  <script>window.jQuery || document.write('<script src="js/jquery-3.3.1.min.js" <\/script>')</script>
+
+  <script>
+
+    $(function () {
+      // constante recebe a table DOM
+      const tbody = $('.table tbody')
+
+      function obterDados() {
+
+        // faz a requisição de todos user
+        $.ajax('https://jsonplaceholder.typicode.com/users', {
+          // requisição tipo GET
+          type: 'GET',
+          // função que dispara antes do envio da requisição
+          beforeSend: function () {
+            // exibe mensagem de carregando caso demore será visualizada
+            $('.table').after('<p class="loading"> Carregando ...</p>')
+          },
+          // função que dispara quando recebe resposta da requisição
+          error: function () {
+            // exibe mensagem caso a resposta seja um erro
+            $('.table').after('<p class="error"> Deu ruim!!! ...</p>')
+          },
+          // função que dispara ao receber sucesso da requisição
+          success: function (dados) {
+            // chama a função exibe dados
+            mostraDados(dados)
+          },
+          // função que dispara ao completar a chamada
+          complete: function () {
+            // remove a msg carregando
+            $('.loading').remove()
+          }
+        })
+
+      }
+
+      obterDados()
+
+      function mostraDados(dados) {
+        // for each que exibe dados
+        $.each(dados, function (i, el) {
+          // template string monta as TR
+          tbody.append(`
+                            <tr>
+                                <th scope="row">${el.id}</th>
+                                <td>${el.name}</td>
+                                <td>${el.username}</td>
+                                <td>${el.email}</td>
+                                <td>${el.address.street}</td>
+                                <td>${el.address.suite}</td>
+                                <td>${el.address.city}</td>
+                                <td>${el.address.zipcode}</td>
+                            </tr>
+                        `)
+        })
+      }
+
+      $('form').on('submit', function (e) {
+        e.preventDefault();
+        const dados = {};
+
+        $('form').find('input').each(function (i, el) {
+          dados[el.id] = el.value;
+        })
+
+        $.ajax('https://jsonplaceholder.typicode.com/users', {
+          type: 'POST',
+          data: dados,
+          success: function (_dados) {
+            console.log(_dados)
+            mostraDados([_dados])
+            alert('Sucesso !!!')
+          },
+          error: function () {
+            alert('Erro!!!')
+          }
+        })
+
+      })
+
+
+    })
+
+  </script>
+
+
+
+
+</body>
+
+</html>
