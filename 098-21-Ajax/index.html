@@ -47,6 +47,9 @@
               <button class="btn btn-primary btn-mds" type="submit">Cadastrar</button>
             </div>
           </div>
+
+
+
         </form>
 
         <table class="table">
@@ -56,10 +59,6 @@
               <th scope="col">Nome</th>
               <th scope="col">Usuário</th>
               <th scope="col">Email</th>
-              <th scope="col">Street</th>
-              <th scope="col">Suite</th>
-              <th scope="col">City</th>
-              <th scope="col">Zip Code</th>
             </tr>
           </thead>
           <tbody>
@@ -134,31 +133,46 @@
                                 <td>${el.name}</td>
                                 <td>${el.username}</td>
                                 <td>${el.email}</td>
-                                <td>${el.address.street}</td>
-                                <td>${el.address.suite}</td>
-                                <td>${el.address.city}</td>
-                                <td>${el.address.zipcode}</td>
                             </tr>
                         `)
         })
       }
 
+      // não foi feito nenhum tipo de verificação
       $('form').on('submit', function (e) {
         e.preventDefault();
+        // dados começa vazio
         const dados = {};
-
+        // procura todos elementos no Input
         $('form').find('input').each(function (i, el) {
+          //  dados recebe valores dos input
           dados[el.id] = el.value;
         })
 
+        function renameKey(obj, oldKey, newKey) {
+          obj[newKey] = obj[oldKey];
+          delete obj[oldKey];
+        }
+        // o jQuery faz o stringfy e parse automático
+        // transforma a string em objeto
+        JSON.parse('{"foo":"bar"}')
+        JSON.stringfy({ "foo": "bar" })
+
         $.ajax('https://jsonplaceholder.typicode.com/users', {
+          // método post
           type: 'POST',
           data: dados,
+          // _dados resposta do servidor
           success: function (_dados) {
+            //mostra no console os dados.teste
+
             console.log(_dados)
+            // chama a função mostra dados com o retorno para exibir na tabela
             mostraDados([_dados])
+            // sucesso
             alert('Sucesso !!!')
           },
+          // se receber erro
           error: function () {
             alert('Erro!!!')
           }
