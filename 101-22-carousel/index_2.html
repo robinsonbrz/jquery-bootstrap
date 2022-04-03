@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Javascript Completo</title>
+        <meta charset="utf-8">
+        
+        <link href="carousel.css" rel="stylesheet">
+        
+    </head>
+    <body>
+
+        <main class="content">
+
+            <h1>Javascript Completo</h1>
+
+            <section class="carousel" data-js-carousel>
+              <div class="carousel__inner">
+                <div class="carousel__item"> <a href=""><img src="images/01.jpg" alt=""></a></div>
+                <div class="carousel__item"> <a href=""><img src="images/02.jpg" alt=""></a></div>
+                <div class="carousel__item"> <a href=""><img src="images/03.jpg" alt=""></a></div>
+                <div class="carousel__item"> <a href=""><img src="images/04.jpg" alt=""></a></div>
+              </div>
+              
+            </section>
+            
+            <section class="carousel" data-js-carousel>
+              <div class="carousel__inner">
+                <div class="carousel__item"> <a href=""><img src="images/01.jpg" alt=""></a></div>
+                <div class="carousel__item"> <a href=""><img src="images/02.jpg" alt=""></a></div>
+                <div class="carousel__item"> <a href=""><img src="images/03.jpg" alt=""></a></div>
+                <div class="carousel__item"> <a href=""><img src="images/04.jpg" alt=""></a></div>
+              </div>
+              
+            </section>
+
+        </main>
+
+        <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
+        
+        <script>
+        
+            $(function(){                
+                
+                const carousel = {
+                    $container: null,
+                    $btnPrev: null,
+                    $btnNext: null,
+                    currentBanner: 1,
+                   
+                    init: function(seletor){
+                        this.$container = typeof seletor === 'string' ? $(seletor) : seletor
+                        
+                        if(!this.$container.length) return
+                        
+                        this.$btnNext = $('<button>').addClass('carousel__btn carousel__btn--next').html('&gt;')
+                        this.$btnPrev = $('<button>').addClass('carousel__btn carousel__btn--prev').html('&lt;')
+                        
+                        this.$container.append([this.$btnPrev, this.$btnNext]).css('overflowX', 'hidden')
+                        
+                        this.addListeners()
+                        
+                        this.setupPagination()
+                    },
+                    
+                    addListeners: function(){
+                        this.$btnPrev.on('click', this.showPrev.bind(this))
+                        this.$btnNext.on('click', this.showNext.bind(this))
+
+                    },
+                    
+                    showPrev: function(e){
+                        console.log(this)
+                        console.log(e.target)
+                        
+                        if(this.currentBanner > 1){
+                            this.currentBanner--
+                            this.showBanner()
+                        }
+                        
+                    },
+                    
+                    showNext: function(e) {
+                        console.log(this)
+                        console.log(e.target)
+                        
+                        if(this.currentBanner <= this.$container.find('.carousel__item').length - 1){ 
+                            this.currentBanner++
+                            this.showBanner()
+                        }
+                        
+                    },
+                    
+                    showBanner: function(){
+                        console.log(this.currentBanner)
+                        let current = this.currentBanner - 1;
+                        let newPos = 0;
+                        
+                        if(current > 0){
+                            let w = $('.carousel__item').width()
+                            newPos = w * current * -1
+                        }
+                        
+                        if(newPos > 0){
+                            newPos = 0
+                            return this.currentBanner = 1
+                        }
+                        
+                        this.$container.find('.carousel__inner').animate({left: newPos}, 1000)
+                        
+                        this.updatePagination()
+                    },
+                    
+                    setupPagination: function(){
+                        const $ul = $('<ul>').addClass('carousel__paginacao').appendTo(this.$container)
+                        const _this = this
+                        
+                        const $lis = this.$container.find('.carousel__item').map(function(i, el){
+                            return $('<li>').on('click', function(e){
+                                let x = $(e.target).index()
+                                console.log(x);
+                                console.log(this)
+                                _this.currentBanner = x + 1
+                                _this.showBanner()
+                                
+                            })
+                        })
+                        
+                        $ul.append($lis.get())
+                        this.$container.append($ul)
+                        
+                        $ul.find('li').first().addClass('atual')
+                    },
+                    
+                    updatePagination:function(){
+                        this.$container.find('.carousel__paginacao .atual').removeClass('atual')
+                        this.$container.find('.carousel__paginacao li').eq(this.currentBanner - 1).addClass('atual')
+                    }
+                    
+                }
+                
+                carousel.init( '.c1' )
+                carousel.init( '.c2' )
+                
+                
+                
+
+
+            })
+        
+        </script>
+        
+    </body>
+</html>
