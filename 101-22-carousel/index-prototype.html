@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Javascript Completo</title>
+    <meta charset="utf-8">
+
+    <link href="carousel.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <main class="content">
+
+        <h1>Javascript Completo</h1>
+
+        <section class="carousel c1" data-js-carousel>
+            <div class="carousel__inner">
+                <div class="carousel__item"> <a href=""><img src="images/01.jpg" alt=""></a></div>
+                <div class="carousel__item"> <a href=""><img src="images/02.jpg" alt=""></a></div>
+                <div class="carousel__item"> <a href=""><img src="images/03.jpg" alt=""></a></div>
+                <div class="carousel__item"> <a href=""><img src="images/04.jpg" alt=""></a></div>
+            </div>
+
+        </section>
+
+        <section class="carousel c1" data-js-carousel>
+            <div class="carousel__inner">
+                <div class="carousel__item"> <a href=""><img src="images/01.jpg" alt=""></a></div>
+                <div class="carousel__item"> <a href=""><img src="images/02.jpg" alt=""></a></div>
+                <div class="carousel__item"> <a href=""><img src="images/03.jpg" alt=""></a></div>
+                <div class="carousel__item"> <a href=""><img src="images/04.jpg" alt=""></a></div>
+            </div>
+
+        </section>
+
+        <section class="carousel c2" data-js-carousel>
+            <div class="carousel__inner">
+                <div class="carousel__item"> <a href=""><img src="images/01.jpg" alt=""></a></div>
+                <div class="carousel__item"> <a href=""><img src="images/02.jpg" alt=""></a></div>
+                <div class="carousel__item"> <a href=""><img src="images/03.jpg" alt=""></a></div>
+                <div class="carousel__item"> <a href=""><img src="images/04.jpg" alt=""></a></div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
+
+    <script>
+
+        $(function () {
+
+
+
+            $.fn.initCarousel = function () {
+
+                return this.each(function () {
+
+                    let $container = $(this);
+                    let currentBanner = 1;
+
+                    const init = function () {
+                        // se não existir retorna o proprio objeto                        
+                        if (!$container.length) return $(this)
+
+                        let $btnNext = $('<button>').addClass('carousel__btn carousel__btn--next').html('&gt;').on('click', showNext)
+                        let $btnPrev = $('<button>').addClass('carousel__btn carousel__btn--prev').html('&lt;').on('click', showPrev)
+                        //   cria os botões
+                        $container.append([$btnPrev, $btnNext]).css('overflowX', 'hidden')
+
+                        setupPagination()
+                    }
+
+                    const showNext = function () {
+                        if (currentBanner <= $container.find('.carousel__item').length - 1) {
+                            currentBanner++
+                            showBanner()
+                        }
+                    }
+
+                    const showPrev = function () {
+                        if (currentBanner > 1) {
+                            currentBanner--
+                            showBanner()
+                        }
+                    }
+
+                    const setupPagination = function () {
+                        const $ul = $('<ul>').addClass('carousel__paginacao').appendTo($container)
+
+                        const $lis = $container.find('.carousel__item').map(function (i, el) {
+                            return $('<li>').on('click', function (e) {
+                                let x = $(e.target).index()
+                                currentBanner = x + 1
+                                showBanner()
+
+                            })
+                        })
+
+                        $ul.append($lis.get())
+                        $container.append($ul)
+
+                        $ul.find('li').first().addClass('atual')
+                    }
+
+                    const showBanner = function () {
+
+                        let current = currentBanner - 1;
+                        let newPos = 0;
+
+                        if (current > 0) {
+                            let w = $('.carousel__item').width()
+                            newPos = w * current * -1
+                        }
+
+                        if (newPos > 0) {
+                            newPos = 0
+                            return currentBanner = 1
+                        }
+
+                        $container.find('.carousel__inner').animate({ left: newPos }, 1000)
+
+                        updatePagination()
+                    }
+
+                    const updatePagination = function () {
+                        $container.find('.carousel__paginacao .atual').removeClass('atual')
+                        $container.find('.carousel__paginacao li').eq(currentBanner - 1).addClass('atual')
+                    }
+
+                    init()
+
+                })
+
+            }
+
+
+            // com prototype cada objeto tem seu comportamento individualiado
+            $('.c1').initCarousel()
+            $('.c2').initCarousel()
+
+
+
+
+
+
+        })
+
+    </script>
+
+</body>
+
+</html>
