@@ -53,8 +53,8 @@
       <tr>
         <td align=center >
             <a  href="https://www.linkedin.com/in/robinsonbrz/">
-            <img src="https://raw.githubusercontent.com/robinsonbrz/robinsonbrz/main/static/img/Notepad++.png" width="100" height="100"/>
-            <br> Notepad++
+            <img src="https://raw.githubusercontent.com/robinsonbrz/robinsonbrz/main/static/img/jquery.png" width="100" height="100"/>
+            <br> jQuery
         </td>
         <td align=center >
             <a  href="https://www.linkedin.com/in/robinsonbrz/">

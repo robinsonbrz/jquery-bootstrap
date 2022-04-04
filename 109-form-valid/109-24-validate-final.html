@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+
+
+    <div class="container">
+
+        <div class="jumbotron p-1 text-white rounded bg-dark mt-5">
+            <div class="py-3 text-center">
+                <h2>Cadastro de usuários</h2>
+                <p class="lead">jQuery validate</a></p>
+            </div>
+        </div>
+
+        <form id="myform">
+            <div class="form-group">
+                <label for="name">Nome</label>
+                <input type="text" class="form-control" name="name" id="name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                    placeholder="Digite um email" name="email" required>
+                <small id="emailHelp" class="form-text text-muted">Não iremos compartilhar com ninguém</small>
+            </div>
+            <div class="form-group">
+                <label for="senha1">Senha</label>
+                <input type="password" class="form-control" id="senha1" placeholder="Senha" name="senha1" required>
+            </div>
+            <div class="form-group">
+                <label for="senha2">Confirme a Senha</label>
+                <input type="password" class="form-control" id="senha2" placeholder="Senha" name="senha2" required>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="terms" value="aceito" required name="terms">
+                <label class="form-check-label" for="terms">Aceito os termos e condições</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
+    <script src="jquery.validate/jquery.validate.min.js"></script>
+
+    <script>
+        $(function () {
+
+            $('#myform').validate({
+                // regras pode se colocar regra de required aqui ao invés de no HTML
+                // length também pode ser inserido aqui
+                rules: {
+                    name: {
+                        required: true,
+                        minlength: 5
+                    },
+                    // valida se senha 1 é igual a senha 2
+                    senha2: {
+                        equalTo: "#senha1"
+                    }
+                },
+                // mensagens da validação 
+                messages: {
+                    name: {
+                        required: "este campo é obrigatorio",
+                        minlength: "no mínimo {0} caracteres"
+                    },
+                    email: {
+                        required: "este email é obrigatório",
+                        email: "digite um email válido"
+                    },
+                    senha1: {
+                        required: "Vai cadastrar sem senha mesmo?"
+                    },
+                    senha2: {
+                        required: "precisa digitar a mesma senha novamente",
+                        equalTo: "as senhas não são iguais"
+
+                    },
+                    terms: {
+                        required: "precisa aceitar os termos"
+                    }
+                }
+            })
+
+
+
+
+        })
+    </script>
+
+
+</body>
+
+</html>
